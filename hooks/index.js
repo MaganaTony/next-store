@@ -18,12 +18,13 @@ export function useProducts() {
 
 export function useProduct(id) {
   const [product, setProduct] = useState({});
-
+  
   useEffect(() => {
+    if (!id) return; // if id is not defined, return empty object to avoid empty page due to undefined product(404)
     getProductbyID(id)
-      .then((data) => setProduct(data))
-      .catch((error) => console.error("[get product error]", error));
+    .then((data) => setProduct(data))
+    .catch((error) => console.error("[useProduct]", error));
   }, [id]);
-
+  
   return { product };
 }

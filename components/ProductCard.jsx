@@ -33,7 +33,7 @@ export default function ProductCard({ id, title, price, thumbnail }) {
             >${price}</p>
             <Link
                 className="bg-white text-black text-center w-full p-2 rounded"
-                href={`/product/${id}`}
+                href={`/products/${id}`}
             >
                 Ver detalle
             </Link>
