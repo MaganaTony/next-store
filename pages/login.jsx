@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useForm } from "react-hook-form";
-import { loginUser } from "../utils/api";
+import { loginUser } from "@/utils/api"; // we can replace ../ with @/
 import { useState } from "react";
 import { useRouter } from "next/router"; //Using router instead of useNavigate
 
@@ -11,6 +11,7 @@ export default function Login() {
     formState: { errors },
     setError,
   } = useForm();
+  
   const router = useRouter(); //declaring router
   const [isSubmitting, setIsSubmitting] = useState(false);
 

@@ -1,7 +1,7 @@
 import ProductCard from "@/components/ProductCard";
 import { getAllProducts } from "@/utils/api";
 
-export default function Static({ products }) {
+export default function Products({ products }) {
 
     return (
         <main className="p-4 flex flex-col gap-8">
@@ -23,18 +23,17 @@ export default function Static({ products }) {
     );
 }
 
-//server side rendering
-
-export async function getServerSideProps() {
-    console.log("getServerSideProps");
+//static site rendering/generation
+export async function getStaticProps() {
+    console.log("getStaticProps");
+    
     const products = await getAllProducts();
 
-    return{
+    return {
         props: {
             products,
         },
+        //incremental static generation
+        revalidate: 60,
     };
-}
-
-//static site generation
-
+}   
