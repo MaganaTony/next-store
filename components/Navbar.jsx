@@ -41,13 +41,13 @@ export default function Navbar() {
     }
   }
   return (
-    <nav className="w-full flex flex-row gap-4 border-b border-neutral-500">
+    <nav className="w-full flex flex-row gap-4 border-b border-neutral-500 bg-slate-600/40">
       {links.map((link) => {
         return (
           <Link
             key={link.href}
             href={link.href}
-            className="text-center w-full p-2"
+            className="text-center w-full p-2 hover:bg-slate-700/40"
           >
             {link.text}
           </Link>

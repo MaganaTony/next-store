@@ -1,6 +1,7 @@
 // hook to provide product list
 import { useEffect, useState } from "react";
 import { getAllProducts, getProductbyID } from "@/utils/api";
+import { useRouter } from "next/router";
 
 export function useProducts() {
   const [products, setProducts] = useState([]);
@@ -28,3 +29,35 @@ export function useProduct(id) {
   
   return { product };
 }
+
+export function useAuth(){
+  const [token, setToken] = useState("");
+  const router = useRouter();
+
+  useEffect(() => {
+    const localStorageToken = localStorage.getItem("token");
+
+    if (!localStorageToken) router.push("/login");
+    
+
+    setToken(localStorageToken);
+  }, []);
+
+  return { token };
+}
+
+// export function useAuth( {notRedirect = false, RedirectTo = '/login} ){
+//   const [token, setToken] = useState("");
+//   const router = useRouter();
+
+//   useEffect(() => {
+//     const localStorageToken = localStorage.getItem("token");
+
+//     if (!localStorageToken && notRedirect === false) router.push(RedirectTo);
+    
+
+//     setToken(localStorageToken);
+//   }, []);
+
+//   return { token };
+// }
